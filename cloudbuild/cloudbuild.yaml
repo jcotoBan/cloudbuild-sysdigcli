@@ -27,6 +27,10 @@ availableSecrets:
   - versionName: projects/gcr-test1-428416/secrets/sysdig_api_url/versions/1
     env: 'SYSDIG_API_URL'
 
+substitutions:
+  _IMAGE_URL: 'us-east1-docker.pkg.dev/gcr-test1-428416/golang-sysdig-cli'
+  _IMAGE_TAG: 'latest'
+
 options:
   logging: CLOUD_LOGGING_ONLY
 
