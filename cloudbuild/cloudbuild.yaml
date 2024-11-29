@@ -15,6 +15,7 @@ steps:
 - name: 'ubuntu'
   script: |
     #!/usr/bin/env bash
+    apt install curl -y
     curl -LO "https://download.sysdig.com/scanning/bin/sysdig-cli-scanner/$(curl -L -s https://download.sysdig.com/scanning/sysdig-cli-scanner/latest_version.txt)/linux/amd64/sysdig-cli-scanner"
     ls
     chmod +x ./sysdig-cli-scanner
