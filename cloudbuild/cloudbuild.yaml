@@ -14,7 +14,7 @@ steps:
     apt-get update -y && apt install curl -y
     curl -LO "https://download.sysdig.com/scanning/bin/sysdig-cli-scanner/$(curl -L -s https://download.sysdig.com/scanning/sysdig-cli-scanner/latest_version.txt)/linux/amd64/sysdig-cli-scanner"
     chmod +x ./sysdig-cli-scanner
-    ./sysdig-cli-scanner --apiurl $SYSDIG_API_URL --policy coto_log4j --console-log IMAGE_URL:IMAGE_TAG
+    ./sysdig-cli-scanner --apiurl $SYSDIG_API_URL --policy coto_log4j --console-log $IMAGE_URL:$IMAGE_TAG
   secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
 - name: 'gcr.io/cloud-builders/docker'
@@ -26,10 +26,6 @@ availableSecrets:
     env: 'SECURE_API_TOKEN'
   - versionName: projects/gcr-test1-428416/secrets/sysdig_api_url/versions/1
     env: 'SYSDIG_API_URL'
-
-substitutions:
-  _IMAGE_URL: 'us-east1-docker.pkg.dev/gcr-test1-428416/golang-sysdig-cli'
-  _IMAGE_TAG: 'latest'
 
 options:
   logging: CLOUD_LOGGING_ONLY
