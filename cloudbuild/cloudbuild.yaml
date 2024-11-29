@@ -5,7 +5,7 @@ steps:
 
 - name: 'ubuntu'  # Using a general-purpose image with shell access
   entrypoint: 'bash'
-  args: ['-c', 'echo SYSDIG_API_URL=$$SYSDIG_API_URL && echo IMAGE_URL_TAG=${_IMAGE_URL}:${_IMAGE_TAG}']
+  args: ['-c', 'echo SYSDIG_API_URL=$SYSDIG_API_URL && echo IMAGE_URL_TAG=${_IMAGE_URL}:${_IMAGE_TAG}']
 
 - name: 'koton00beng/sysdig-cli:latest'
   args: [ '--apiurl', '$$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}' ]
