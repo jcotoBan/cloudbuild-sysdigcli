@@ -1,0 +1,24 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', '${_IMAGE_URL}:${_IMAGE_TAG}', '.']
+
+- name: 'koton00beng/sysdig-cli:demo'
+  args: [ '--apiurl', '$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}' ]
+  secretEnv: ['SYSDIG_API_TOKEN', 'SYSDIG_API_URL']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', '${_IMAGE_URL}:${_IMAGE_TAG}']
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/gcr-test1-428416/secrets/sysdig_token/versions/latest
+    env: 'SYSDIG_API_TOKEN'
+  - versionName: projects/gcr-test1-428416/secrets/sysdig_api_url/versions/latest
+    env: 'SYSDIG_API_URL'
+
+substitutions:
+  _IMAGE_URL: 'us-east1-docker.pkg.dev/gcr-test1-428416/golang-sysdig-cli'
+  _IMAGE_TAG: 'latest'
+
+timeout: 900s
