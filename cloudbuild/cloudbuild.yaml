@@ -6,11 +6,6 @@ steps:
 - name: 'ubuntu'
   script: |
     #!/usr/bin/env bash
-
-    # Define the image URL and tag
-    IMAGE_URL='us-east1-docker.pkg.dev/gcr-test1-428416/golang-sysdig-cli'
-    IMAGE_TAG='latest'
-
     apt-get update -y && apt install curl -y
     curl -LO "https://download.sysdig.com/scanning/bin/sysdig-cli-scanner/$(curl -L -s https://download.sysdig.com/scanning/sysdig-cli-scanner/latest_version.txt)/linux/amd64/sysdig-cli-scanner"
     chmod +x ./sysdig-cli-scanner
