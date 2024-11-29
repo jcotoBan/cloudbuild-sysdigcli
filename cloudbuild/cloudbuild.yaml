@@ -13,6 +13,7 @@ steps:
 #  secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
 - name: 'ubuntu'
+  entrypoint: 'bash'
   args:
     - '-c'
     - |
