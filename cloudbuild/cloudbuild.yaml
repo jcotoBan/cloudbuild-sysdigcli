@@ -12,9 +12,8 @@ steps:
 #  args: [ '--apiurl', '$$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}', 'cat test.txt' ]
 #  secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
-- name: 'koton00beng/sysdig-cli:latest'
+- name: 'koton00beng/sysdig-cli:v2'
   args:
-    - '-c'
     - |
       ls -la
       ./sysdig-cli --apiurl "$$SYSDIG_API_URL" --console-log "${_IMAGE_URL}:${_IMAGE_TAG}";
