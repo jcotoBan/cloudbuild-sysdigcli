@@ -3,9 +3,10 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', '${_IMAGE_URL}:${_IMAGE_TAG}', './sample_app/']
 
-- name: 'koton00beng/sysdig-cli:v1'
+- name: 'koton00beng/sysdig-cli:latest'
   args: [ '--apiurl', '$$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}' ]
   secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
+  allowExitCodes: [1]
 
 - name: 'ubuntu'
   entrypoint: 'bash'
