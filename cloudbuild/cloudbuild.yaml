@@ -6,7 +6,7 @@ steps:
 
 - name: 'koton00beng/sysdig-cli:latest'
   args: [ '--apiurl', '$$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}' ]
-  secretEnv: ['SYSDIG_API_TOKEN', 'SYSDIG_API_URL']
+  secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', '${_IMAGE_URL}:${_IMAGE_TAG}']
@@ -14,7 +14,7 @@ steps:
 availableSecrets:
   secretManager:
   - versionName: projects/gcr-test1-428416/secrets/sysdig_token/versions/1
-    env: 'SYSDIG_API_TOKEN'
+    env: 'SECURE_API_TOKEN'
   - versionName: projects/gcr-test1-428416/secrets/sysdig_api_url/versions/1
     env: 'SYSDIG_API_URL'
 
