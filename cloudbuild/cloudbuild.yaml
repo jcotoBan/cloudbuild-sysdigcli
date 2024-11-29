@@ -5,10 +5,6 @@ steps:
 
 
 - name: 'koton00beng/sysdig-cli:demo'
-  entrypoint: 'bash'
-  args: ['-c', 'ls -la']
-
-- name: 'koton00beng/sysdig-cli:demo'
   args: [ '--apiurl', '$$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}' ]
   secretEnv: ['SYSDIG_API_TOKEN', 'SYSDIG_API_URL']
 
