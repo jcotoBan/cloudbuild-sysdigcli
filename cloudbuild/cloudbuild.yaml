@@ -4,6 +4,7 @@ steps:
   args: ['build', '-t', '${_IMAGE_URL}:${_IMAGE_TAG}', './sample_app/']
 
 - name: 'ubuntu'
+  entrypoint: 'bash'
   args: [ 'echo $$SECURE_API_TOKEN' ]
   secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
