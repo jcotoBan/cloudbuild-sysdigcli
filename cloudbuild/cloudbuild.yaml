@@ -17,8 +17,6 @@ steps:
   args:
     - '-c'
     - |
-      ls -la
-      ./sysdig-cli --apiurl "$$SYSDIG_API_URL" --console-log "${_IMAGE_URL}:${_IMAGE_TAG}";
       cat /workspace/scan-logs;
   secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
