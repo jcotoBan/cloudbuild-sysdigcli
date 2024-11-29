@@ -3,13 +3,22 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', '${_IMAGE_URL}:${_IMAGE_TAG}', './sample_app/']
 
-- name: 'ubuntu'  # Using a general-purpose image with shell access
-  entrypoint: 'bash'
-  args: ['-c', 'echo SECURE_API_TOKEN=$$SECURE_API_TOKEN && echo IMAGE_URL_TAG=${_IMAGE_URL}:${_IMAGE_TAG}']
-  secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
+#- name: 'ubuntu' 
+#  entrypoint: 'bash'
+#  args: ['-c', 'echo SECURE_API_TOKEN=$$SECURE_API_TOKEN && echo IMAGE_URL_TAG=${_IMAGE_URL}:${_IMAGE_TAG}']
+#  secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
+
+#- name: 'koton00beng/sysdig-cli:latest'
+#  args: [ '--apiurl', '$$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}', 'cat test.txt' ]
+#  secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
 - name: 'koton00beng/sysdig-cli:latest'
-  args: [ '--apiurl', '$$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}' ]
+  entrypoint: 'sh'
+  args:
+    - '-c'
+    - |
+      sysdig-cli --apiurl "$$SYSDIG_API_URL" "${_IMAGE_URL}:${_IMAGE_TAG}";
+      cat /workspace/scan-logs;
   secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
 - name: 'gcr.io/cloud-builders/docker'
