@@ -12,9 +12,9 @@ steps:
 
 availableSecrets:
   secretManager:
-  - versionName: projects/gcr-test1-428416/secrets/sysdig_token/versions/latest
+  - versionName: projects/gcr-test1-428416/secrets/sysdig_token/versions/1
     env: 'SYSDIG_API_TOKEN'
-  - versionName: projects/gcr-test1-428416/secrets/sysdig_api_url/versions/latest
+  - versionName: projects/gcr-test1-428416/secrets/sysdig_api_url/versions/1
     env: 'SYSDIG_API_URL'
 
 substitutions:
