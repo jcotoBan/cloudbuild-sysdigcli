@@ -1,5 +1,5 @@
 # Start from the official Golang image (with known vulnerabilities in older versions)
-#BUILD TEST 15
+#BUILD TEST 16
 FROM golang:1.18-alpine
 
 # Set the working directory
