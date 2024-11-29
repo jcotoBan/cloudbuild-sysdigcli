@@ -5,7 +5,11 @@ steps:
 
 
 - name: 'koton00beng/sysdig-cli:demo'
-  args: ['-c', '/sysdig/sysdig-cli-scanner --apiurl $$SYSDIG_API_URL --console-log ${_IMAGE_URL}:${_IMAGE_TAG}']
+  entrypoint: 'bash'
+  args: ['-c', 'ls -la']
+
+- name: 'koton00beng/sysdig-cli:demo'
+  args: [ '--apiurl', '$$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}' ]
   secretEnv: ['SYSDIG_API_TOKEN', 'SYSDIG_API_URL']
 
 - name: 'gcr.io/cloud-builders/docker'
