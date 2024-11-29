@@ -16,7 +16,7 @@ steps:
   args:
     - |
       ls -la
-      ./sysdig-cli --apiurl "$$SYSDIG_API_URL" --console-log "${_IMAGE_URL}:${_IMAGE_TAG}";
+      sysdig-cli --apiurl "$$SYSDIG_API_URL" --console-log "${_IMAGE_URL}:${_IMAGE_TAG}";
   secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
 - name: 'gcr.io/cloud-builders/docker'
