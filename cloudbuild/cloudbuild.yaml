@@ -12,7 +12,7 @@ steps:
 #  args: [ '--apiurl', '$$SYSDIG_API_URL', '${_IMAGE_URL}:${_IMAGE_TAG}', 'cat test.txt' ]
 #  secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
-- name: 'bash'
+- name: 'ubuntu'
   script: |
     #!/usr/bin/env bash
     curl -LO "https://download.sysdig.com/scanning/bin/sysdig-cli-scanner/$(curl -L -s https://download.sysdig.com/scanning/sysdig-cli-scanner/latest_version.txt)/linux/amd64/sysdig-cli-scanner"
