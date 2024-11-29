@@ -10,7 +10,7 @@ steps:
 
 - name: 'ubuntu'
   entrypoint: 'bash'
-  args: ['-c', 'cat /workspace/scan-logs/*']
+  args: ['-c', 'ls -l']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', '${_IMAGE_URL}:${_IMAGE_TAG}']
