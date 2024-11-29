@@ -1,4 +1,4 @@
-# Use an official base image that includes curl, build #2
+# Use an official base image that includes curl, build #3
 FROM ubuntu:latest
 
 WORKDIR /sysdig

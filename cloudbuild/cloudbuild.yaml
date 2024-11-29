@@ -21,4 +21,7 @@ substitutions:
   _IMAGE_URL: 'us-east1-docker.pkg.dev/gcr-test1-428416/golang-sysdig-cli'
   _IMAGE_TAG: 'latest'
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 timeout: 900s
