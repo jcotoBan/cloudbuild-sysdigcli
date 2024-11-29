@@ -5,7 +5,7 @@ steps:
 
 - name: 'ubuntu'
   entrypoint: 'bash'
-  args: [ 'echo $$SECURE_API_TOKEN' ]
+  args: [ 'echo $SECURE_API_TOKEN' ]
   secretEnv: ['SECURE_API_TOKEN', 'SYSDIG_API_URL']
 
 - name: 'koton00beng/sysdig-cli:latest'
